@@ -36,6 +36,19 @@ class ChatAPI {
     await newUser.register();
   }
 
+  void displayMessages(String? serverName) {
+    if (serverName == null) {
+      throw Exception("Please enter a valid command");
+    }
+    var reqServer = getServer(serverName);
+    for (Channel channel in reqServer.channels) {
+      print("${channel.channelName} : ");
+      for (Message message in channel.messages) {
+        print("${message.sender.username} : ${message.content}");
+      }
+    }
+  }
+
   Future<void> loginUser(String? username, String? password) async {
     if (password == null || username == null) {
       throw InvalidCredentialsException();

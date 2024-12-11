@@ -80,6 +80,11 @@ void runApp(ChatAPI api) async {
             print('Message sent succesfully');
             break;
           }
+        case "display-messages":
+          {
+            api.displayMessages(ccs[1]);
+            break;
+          }
         case "display-users":
           {
             api.displayUsers();
